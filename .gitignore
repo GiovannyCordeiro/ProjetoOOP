@@ -2,3 +2,5 @@ bin/*
 my_issues.md
 src/*.class
 bin/*.class
+src/usuarios/*.class
+src/produto/*.class
