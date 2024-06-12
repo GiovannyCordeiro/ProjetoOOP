@@ -1,2 +1,4 @@
 bin/*
 my_issues.md
+src/*.class
+bin/*.class
