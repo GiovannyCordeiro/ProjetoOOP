@@ -31,7 +31,7 @@ public class LogicaProdutos {
         this.atualizarProduto();
         break;
       case "4":
-        // logica delecao
+        this.deletarProduto();
         break;
       default:
         break;
@@ -117,6 +117,18 @@ public class LogicaProdutos {
     } catch (IndexOutOfBoundsException e) {
       System.out.println("Índice do item não encontrado: " + indexAttProduto);
     }
+  }
+
+  void deletarProduto(){
+    System.out.println("Digite o numero do item que se quer apagar:");
+    String opcaoDeletarProduto = this.newScanner.nextLine();
+    int indexDelProduto = Integer.parseInt(opcaoDeletarProduto) - 1;
+    try {
+      listaProdutos.remove(indexDelProduto);
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Índice do item não encontrado: " + indexDelProduto);
+    }
+    System.out.println("Item deletado com sucesso!");
   }
 
 
