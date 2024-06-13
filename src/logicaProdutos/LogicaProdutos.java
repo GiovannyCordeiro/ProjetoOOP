@@ -25,7 +25,7 @@ public class LogicaProdutos {
         // logica consulta
         break;
       case "2":
-        // logica insercao
+        this.inserirProduto();
         break;
       case "3":
         // logica atualizacao
@@ -36,6 +36,33 @@ public class LogicaProdutos {
       default:
         break;
     }
+  }
+
+  void inserirProduto(){
+    System.out.println("Digite o nome do novo produto");
+    String nomeProduto = this.newScanner.nextLine();
+
+    System.out.println("Digite a categoria do novo produto");
+    String categoriaProduto = this.newScanner.nextLine();
+
+    System.out.println("Digite o fornecedor do novo produto");
+    String fornecedorProduto = this.newScanner.nextLine();
+
+    System.out.println("Digite o preço do novo produto"); //float
+    String precoProduto = this.newScanner.nextLine();
+    Float floatPrecoProduto = Float.parseFloat(precoProduto);
+
+    System.out.println("Digite a quantidade do novo produto"); //int
+    String quantProduto = this.newScanner.nextLine();
+    int intQuantProduto = Integer.parseInt(quantProduto);
+
+    System.out.println("Digiite a descrição do produto");
+    String descricaoProduto = this.newScanner.nextLine();
+
+    Produto novoProduto = new Produto(nomeProduto, categoriaProduto, fornecedorProduto, floatPrecoProduto, intQuantProduto, descricaoProduto);
+
+    this.listaProdutos.add(novoProduto);
+    System.out.println("Produto inserido com sucesso!");
   }
 
 }
