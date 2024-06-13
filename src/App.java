@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import usuarios.*;
 import adicionarUsuarios.*;
+import logicaProdutos.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -28,11 +29,12 @@ public class App {
           opcaoEscolhida = scanner.nextLine();
           switch (opcaoEscolhida) {
             case "1":
-              AdicionarUsuarios logica = new AdicionarUsuarios(ListaUsuarios);
-              logica.novoUsuario();
+              AdicionarUsuarios logicaUsr = new AdicionarUsuarios(ListaUsuarios);
+              logicaUsr.novoUsuario();
               break;
             case "2":
-              System.out.println("ENTRANDO NA LOGICA 2");
+              LogicaProdutos logicaProd = new LogicaProdutos(ListaProdutos);
+              logicaProd.opcoesProdutos();
               break;
             case "3":
               System.out.println("ENTRANDO NA LOGICA 3");
