@@ -22,7 +22,7 @@ public class LogicaProdutos {
 
     switch (opcaoOperacaoProdutos) {
       case "1":
-        // logica consulta
+        this.consultarProdutos();
         break;
       case "2":
         this.inserirProduto();
@@ -35,6 +35,17 @@ public class LogicaProdutos {
         break;
       default:
         break;
+    }
+  }
+
+  void consultarProdutos(){
+    if (listaProdutos.size() == 0){
+      System.out.println("A lista de produtos esta vazia!");
+    }
+    for (int i = 0; i < listaProdutos.size(); i++) {
+      int posicao = i + 1;
+      String texto = posicao + ": " + listaProdutos.get(i);
+      System.out.println(texto);
     }
   }
 
