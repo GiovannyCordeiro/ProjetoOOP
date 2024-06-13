@@ -4,3 +4,4 @@ src/*.class
 bin/*.class
 src/usuarios/*.class
 src/produto/*.class
+src/adicionarUsuarios/*.class

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import usuarios.*;
+import adicionarUsuarios.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -26,7 +28,8 @@ public class App {
           opcaoEscolhida = scanner.nextLine();
           switch (opcaoEscolhida) {
             case "1":
-              System.out.println("ENTRANDO NA LOGICA 1");
+              AdicionarUsuarios logica = new AdicionarUsuarios(ListaUsuarios);
+              logica.novoUsuario();
               break;
             case "2":
               System.out.println("ENTRANDO NA LOGICA 2");
@@ -48,6 +51,8 @@ public class App {
               break;
           }
         }
+
+        System.out.println(ListaUsuarios.size());
         scanner.close();
     }
 }
