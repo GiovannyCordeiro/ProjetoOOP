@@ -38,7 +38,7 @@ public class LogicaProdutos {
     }
   }
 
-  void consultarProdutos(){
+  public void consultarProdutos(){
     if (listaProdutos.size() == 0){
       System.out.println("A lista de produtos esta vazia!");
     }

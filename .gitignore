@@ -6,3 +6,5 @@ src/usuarios/*.class
 src/produto/*.class
 src/adicionarUsuarios/*.class
 src/logicaProdutos/*.class
+src/registraVendas/*.class
+src/vendas/*.class
