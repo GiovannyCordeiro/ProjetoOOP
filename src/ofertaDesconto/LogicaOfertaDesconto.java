@@ -30,33 +30,7 @@ public class LogicaOfertaDesconto {
         // logica
         break;
       case "2":
-        // listar produtos
-        LogicaProdutos produtos = new LogicaProdutos(this.listaDeProdutos);
-        produtos.consultarProdutos();
-
-        // receber o indice do produto
-        System.out.println("Escolha o numero de um produto dentro dessa lista de produtos");
-        String opcaoProduto = newScanner.nextLine();
-        int opcaoProdutoInt = Integer.parseInt(opcaoProduto);
-
-        // Pegando produto na lista de produtos, se o usuario passar um indice que nao tem
-        // tem que dar pau
-        Produto produtoEscolhido = (Produto) this.listaDeProdutos.get(opcaoProdutoInt - 1);
-        float precoAnterior = produtoEscolhido.getPreco();
-        
-        // Input do valor que vai ser abatido
-        System.out.println("Escolha o valor abatido de desconto");
-        String valorAbatidoNoDesconto = newScanner.nextLine();
-        float valorAbatidoNoDescontoFloat = Float.parseFloat(valorAbatidoNoDesconto);
-
-        // adicionando desconto
-        Desconto novoDesconto = new Desconto(produtoEscolhido, precoAnterior, valorAbatidoNoDescontoFloat);
-        this.listaOfertasDesconto.add(novoDesconto);
-
-        // atualizando precoProduto apos o desconto
-        produtoEscolhido.setPreco(novoDesconto.getPrecoPosDesconto());
-
-        System.out.println("Oferta de desconto criada com sucesso!");
+        this.cadastrarOfertaDesconto();
         break;
       case "3":
         // logica
@@ -64,7 +38,35 @@ public class LogicaOfertaDesconto {
       default:
         break;
     }
+  }
 
+  private void cadastrarOfertaDesconto(){
+    // listar produtos
+    LogicaProdutos produtos = new LogicaProdutos(this.listaDeProdutos);
+    produtos.consultarProdutos();
 
+    // receber o indice do produto
+    System.out.println("Escolha o numero de um produto dentro dessa lista de produtos");
+    String opcaoProduto = newScanner.nextLine();
+    int opcaoProdutoInt = Integer.parseInt(opcaoProduto);
+
+    // Pegando produto na lista de produtos, se o usuario passar um indice que nao tem
+    // tem que dar pau
+    Produto produtoEscolhido = (Produto) this.listaDeProdutos.get(opcaoProdutoInt - 1);
+    float precoAnterior = produtoEscolhido.getPreco();
+    
+    // Input do valor que vai ser abatido
+    System.out.println("Escolha o valor abatido de desconto");
+    String valorAbatidoNoDesconto = newScanner.nextLine();
+    float valorAbatidoNoDescontoFloat = Float.parseFloat(valorAbatidoNoDesconto);
+
+    // adicionando desconto
+    Desconto novoDesconto = new Desconto(produtoEscolhido, precoAnterior, valorAbatidoNoDescontoFloat);
+    this.listaOfertasDesconto.add(novoDesconto);
+
+    // atualizando precoProduto apos o desconto
+    produtoEscolhido.setPreco(novoDesconto.getPrecoPosDesconto());
+
+    System.out.println("Oferta de desconto criada com sucesso!");
   }
 }
