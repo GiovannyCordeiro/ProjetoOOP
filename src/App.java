@@ -3,6 +3,7 @@ import java.util.Scanner;
 import usuarios.*;
 import adicionarUsuarios.*;
 import logicaProdutos.*;
+import ofertaDesconto.LogicaOfertaDesconto;
 import produto.Produto;
 import registraVendas.*;
 
@@ -12,6 +13,7 @@ public class App {
         ArrayList<Produto> ListaProdutos = new ArrayList<Produto>();
         ArrayList ListaUsuarios = new ArrayList<>();
         ArrayList listaVendas = new ArrayList<>();
+        ArrayList ofertasDesconto = new ArrayList<>();
 
         // começo do programa
         Scanner scanner = new Scanner(System.in);
@@ -45,9 +47,10 @@ public class App {
             case "3":
                 RegistraVendas registrarVendas = new RegistraVendas(listaVendas, ListaProdutos);
                 registrarVendas.adicionarVenda();
-                // System.err.println("tamano da lista de vendas: " + listaVendas.size());
               break;
             case "4":
+              LogicaOfertaDesconto logicaDesconto = new LogicaOfertaDesconto(ofertasDesconto, ListaProdutos);
+              logicaDesconto.menuOfertasDesconto();
               System.out.println("ENTRANDO NA LOGICA 4");
               break;
             case "5":
@@ -62,7 +65,7 @@ public class App {
           }
         }
 
-        System.out.println(ListaUsuarios.size());
+        // System.out.println(ListaUsuarios.size());
         scanner.close();
     }
 }
