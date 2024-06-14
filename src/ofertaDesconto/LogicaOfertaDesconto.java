@@ -27,7 +27,7 @@ public class LogicaOfertaDesconto {
 
     switch (opcaoOfertaDesconto) {
       case "1":
-        // logica
+        this.mostrarOfertasDesconto();
         break;
       case "2":
         this.cadastrarOfertaDesconto();
@@ -69,4 +69,16 @@ public class LogicaOfertaDesconto {
 
     System.out.println("Oferta de desconto criada com sucesso!");
   }
+
+  private void mostrarOfertasDesconto(){
+    if(this.listaOfertasDesconto.size() == 0){
+      System.out.println("Não existem ofertas de desconto cadastradas!");
+      return;
+    }
+    for (int i = 0; i < this.listaOfertasDesconto.size(); i++) {
+      System.out.println(this.listaOfertasDesconto.get(i).toString());
+    }
+  }
+
+  
 }
