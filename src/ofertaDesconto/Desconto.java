@@ -26,4 +26,21 @@ public class Desconto implements RegraDesconto{
     return precoPosDesconto;
   }
 
+  public float getPrecoAnterior() {
+    return precoAnterior;
+  }
+
+  public Produto getProdutoEscolhido() {
+    return produtoEscolhido;
+  }
+
+  @Override
+    public String toString() {
+      return "Desconto: " +
+              "Produto escolhido: " + produtoEscolhido.getNome() + "; " + 
+              "Preco anterior: " + this.precoAnterior + "; " + 
+              "Preco pos desconto: " + this.precoPosDesconto
+              ;
+    }
+
 }

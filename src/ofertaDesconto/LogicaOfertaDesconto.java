@@ -33,7 +33,7 @@ public class LogicaOfertaDesconto {
         this.cadastrarOfertaDesconto();
         break;
       case "3":
-        // logica
+        this.removerOfertaDesconto();
         break;
       default:
         break;
@@ -76,9 +76,22 @@ public class LogicaOfertaDesconto {
       return;
     }
     for (int i = 0; i < this.listaOfertasDesconto.size(); i++) {
-      System.out.println(this.listaOfertasDesconto.get(i).toString());
+      System.out.println(i + 1 + ": " + this.listaOfertasDesconto.get(i).toString());
     }
   }
 
-  
+  private void removerOfertaDesconto(){
+    this.mostrarOfertasDesconto();
+
+    System.out.println("Escolha dos numeros de oferta de desconto");
+    String ofertaDeDesconto = newScanner.nextLine();
+    int ofertaDeDescontoInt = Integer.parseInt(ofertaDeDesconto);
+
+    Desconto descontoEscolhido = (Desconto) this.listaOfertasDesconto.get(ofertaDeDescontoInt - 1);
+    float precoAnterior = descontoEscolhido.precoAnterior;
+    descontoEscolhido.produtoEscolhido.setPreco(precoAnterior);
+
+    this.listaOfertasDesconto.remove(ofertaDeDescontoInt);
+    System.out.println("Desconto removido com sucesso!");
+  }
 }

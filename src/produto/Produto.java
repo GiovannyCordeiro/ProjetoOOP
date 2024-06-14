@@ -55,6 +55,10 @@ public class Produto implements Cloneable{
     this.preco = preco;
   }
 
+  public String getNome() {
+    return nome;
+  }
+
   @Override
     public Produto clone() {
         try {
