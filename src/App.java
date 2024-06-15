@@ -6,11 +6,12 @@ import logicaProdutos.*;
 import ofertaDesconto.LogicaOfertaDesconto;
 import produto.Produto;
 import registraVendas.*;
+import relatorioVendas.RelatorioVendas;
 
 public class App {
     public static void main(String[] args) throws Exception {
         // Variaveis globais de armazenamento
-        ArrayList<Produto> ListaProdutos = new ArrayList<Produto>();
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
         ArrayList ListaUsuarios = new ArrayList<>();
         ArrayList listaVendas = new ArrayList<>();
         ArrayList ofertasDesconto = new ArrayList<>();
@@ -41,20 +42,20 @@ public class App {
               logicaUsr.novoUsuario();
               break;
             case "2":
-              LogicaProdutos logicaProd = new LogicaProdutos(ListaProdutos);
+              LogicaProdutos logicaProd = new LogicaProdutos(listaProdutos);
               logicaProd.opcoesProdutos();
               break;
             case "3":
-                RegistraVendas registrarVendas = new RegistraVendas(listaVendas, ListaProdutos);
+                RegistraVendas registrarVendas = new RegistraVendas(listaVendas, listaProdutos);
                 registrarVendas.adicionarVenda();
               break;
             case "4":
-              LogicaOfertaDesconto logicaDesconto = new LogicaOfertaDesconto(ofertasDesconto, ListaProdutos);
+              LogicaOfertaDesconto logicaDesconto = new LogicaOfertaDesconto(ofertasDesconto, listaProdutos);
               logicaDesconto.menuOfertasDesconto();
-              System.out.println("ENTRANDO NA LOGICA 4");
               break;
             case "5":
-              System.out.println("ENTRANDO NA LOGICA 5");
+              RelatorioVendas relatorioVendas = new RelatorioVendas(listaVendas, ofertasDesconto, listaProdutos);
+              relatorioVendas.gerarRelatorio();
               break;
             case "6":
               System.out.println("Te vejo em breve!");
