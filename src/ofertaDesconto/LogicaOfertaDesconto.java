@@ -50,11 +50,16 @@ public class LogicaOfertaDesconto {
     String opcaoProduto = newScanner.nextLine();
     int opcaoProdutoInt = Integer.parseInt(opcaoProduto);
 
-    // Pegando produto na lista de produtos, se o usuario passar um indice que nao tem
-    // tem que dar pau
-    Produto produtoEscolhido = (Produto) this.listaDeProdutos.get(opcaoProdutoInt - 1);
+    // Produto escolhido pelo usuario
+    Produto produtoEscolhido;
+    try {
+      produtoEscolhido = (Produto) this.listaDeProdutos.get(opcaoProdutoInt - 1);
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Produto não cadastrado no sistema, tente novamente");
+      return;
+    }
     float precoAnterior = produtoEscolhido.getPreco();
-    
+
     // Input do valor que vai ser abatido
     System.out.println("Escolha o valor abatido de desconto");
     String valorAbatidoNoDesconto = newScanner.nextLine();
@@ -87,7 +92,15 @@ public class LogicaOfertaDesconto {
     String ofertaDeDesconto = newScanner.nextLine();
     int ofertaDeDescontoInt = Integer.parseInt(ofertaDeDesconto);
 
-    Desconto descontoEscolhido = (Desconto) this.listaOfertasDesconto.get(ofertaDeDescontoInt - 1);
+
+    Desconto descontoEscolhido;
+    try {
+      descontoEscolhido = (Desconto) this.listaOfertasDesconto.get(ofertaDeDescontoInt - 1);
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Desconto não cadastrado no sistema, tente novamente");
+      return;
+    }
+
     float precoAnterior = descontoEscolhido.precoAnterior;
     descontoEscolhido.produtoEscolhido.setPreco(precoAnterior);
 

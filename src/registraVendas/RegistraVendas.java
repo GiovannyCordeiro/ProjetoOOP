@@ -45,10 +45,19 @@ public class RegistraVendas {
       System.out.println("Escolha o numero do produto");
       String opcaoProduto = newScanner.nextLine();
       int indiceProduto = Integer.parseInt(opcaoProduto) - 1;
-      Produto produtoEscolhido = (Produto) listaProdutos.get(indiceProduto);
 
-      // precise clonar a instancia do objeto caso nao clonasse ia sobrescrever
-      // a primeira referencia na memoria
+      Produto produtoEscolhido;
+      try {
+        produtoEscolhido = (Produto) listaProdutos.get(indiceProduto);
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Item não cadastrado no sistema, tente novamente");
+        return;
+      }
+
+      /* OBS!
+        Foi necessário clonar a instancia do objeto, o objetivo dessa implementação
+        foi presar a referencia da primeira lista na memoria, evidando que sobreescreve-la
+      */
       Produto cloneProdutoEscolhido = produtoEscolhido.clone();
 
       // definindo quantidade do produto
