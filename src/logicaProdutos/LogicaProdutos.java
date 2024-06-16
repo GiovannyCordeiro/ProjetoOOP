@@ -7,6 +7,7 @@ import produto.Produto;
 
 public class LogicaProdutos {
   ArrayList listaProdutos;
+
   Scanner newScanner = new Scanner(System.in);
   public LogicaProdutos(ArrayList listaProdutos){
     this.listaProdutos = listaProdutos;
@@ -50,6 +51,9 @@ public class LogicaProdutos {
   }
 
   void inserirProduto(){
+    float floatPrecoProduto;
+    int intQuantProduto;
+
     System.out.println("Digite o nome do novo produto");
     String nomeProduto = this.newScanner.nextLine();
 
@@ -59,16 +63,22 @@ public class LogicaProdutos {
     System.out.println("Digite o fornecedor do novo produto");
     String fornecedorProduto = this.newScanner.nextLine();
 
-    System.out.println("Digite o preço do novo produto"); //float
-    String precoProduto = this.newScanner.nextLine();
-    Float floatPrecoProduto = Float.parseFloat(precoProduto);
-
-    System.out.println("Digite a quantidade do novo produto"); //int
-    String quantProduto = this.newScanner.nextLine();
-    int intQuantProduto = Integer.parseInt(quantProduto);
-
-    System.out.println("Digiite a descrição do produto");
+    System.out.println("Digite a descrição do produto");
     String descricaoProduto = this.newScanner.nextLine();
+
+    try {
+      System.out.println("Digite o preço do novo produto");
+      String precoProduto = this.newScanner.nextLine();
+      floatPrecoProduto = Float.parseFloat(precoProduto);
+
+      System.out.println("Digite a quantidade do novo produto");
+      String quantProduto = this.newScanner.nextLine();
+      intQuantProduto = Integer.parseInt(quantProduto);
+    } catch (NumberFormatException e) {
+      System.out.println("Preço preenchido com string em vez de numero, tente novamente!");
+      return;
+    }
+    
 
     Produto novoProduto = new Produto(nomeProduto, categoriaProduto, fornecedorProduto, floatPrecoProduto, intQuantProduto, descricaoProduto);
 
@@ -77,46 +87,58 @@ public class LogicaProdutos {
   }
 
   void atualizarProduto(){
+
     System.out.println("Digite o numero do item que se quer atualizar:");
     String opcaoAttProduto = this.newScanner.nextLine();
-
     int indexAttProduto = Integer.parseInt(opcaoAttProduto) - 1;
+
     try {
-      System.out.println("Digite novo nome do produto");
-      String novoNome = this.newScanner.nextLine();
+      listaProdutos.get(indexAttProduto);
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Item não cadastrado no sistema, tente novamente");
+      return;
+    }
 
-      System.out.println("Digite nova categoria do produto");
-      String novaCategoria = this.newScanner.nextLine();
+    System.out.println("Digite novo nome do produto");
+    String novoNome = this.newScanner.nextLine();
 
-      System.out.println("Digite novo fornecedor do produto");
-      String novoFornecedor = this.newScanner.nextLine();
+    System.out.println("Digite nova categoria do produto");
+    String novaCategoria = this.newScanner.nextLine();
 
+    System.out.println("Digite novo fornecedor do produto");
+    String novoFornecedor = this.newScanner.nextLine();
+
+    System.out.println("Digite nova descricao do produto");
+    String novaDescricao = this.newScanner.nextLine();
+
+    // variaveis locais para criação posterior do produto
+    float novoPrecoFloat;
+    int novaQuantInt;
+
+    try {
       System.out.println("Digite novo preço do produto");
       String novoPreco = this.newScanner.nextLine();
-      float novoPrecoFloat = Float.parseFloat(novoPreco);
+      novoPrecoFloat = Float.parseFloat(novoPreco);
 
       System.out.println("Digite nova quantidade do produto");
       String novaQuantidade = this.newScanner.nextLine();
-      int novaQuantInt = Integer.parseInt(novaQuantidade);
-
-      System.out.println("Digite nova descricao do produto");
-      String novaDescricao = this.newScanner.nextLine();
-
-      Produto produtoAtualizado = new Produto(
-        novoNome, 
-        novaCategoria, 
-        novoFornecedor, 
-        novoPrecoFloat, 
-        novaQuantInt, 
-        novaDescricao
-      );
-
-      listaProdutos.set(indexAttProduto, produtoAtualizado);
-      System.out.println("Produto atualizado com sucesso!");
-
-    } catch (IndexOutOfBoundsException e) {
-      System.out.println("Índice do item não encontrado: " + indexAttProduto);
+      novaQuantInt = Integer.parseInt(novaQuantidade);
+    } catch (NumberFormatException e) {
+      System.out.println("Preço preenchido com string em vez de numero, tente novamente!");
+      return;
     }
+
+    Produto produtoAtualizado = new Produto(
+      novoNome, 
+      novaCategoria, 
+      novoFornecedor, 
+      novoPrecoFloat, 
+      novaQuantInt, 
+      novaDescricao
+    );
+
+    listaProdutos.set(indexAttProduto, produtoAtualizado);
+    System.out.println("Produto atualizado com sucesso!");
   }
 
   void deletarProduto(){
@@ -126,10 +148,9 @@ public class LogicaProdutos {
     try {
       listaProdutos.remove(indexDelProduto);
     } catch (IndexOutOfBoundsException e) {
-      System.out.println("Índice do item não encontrado: " + indexDelProduto);
+      System.out.println("Produto não registrado no sistema");
     }
     System.out.println("Item deletado com sucesso!");
   }
-
 
 }

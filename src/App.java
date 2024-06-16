@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import usuarios.*;
 import adicionarUsuarios.*;
 import logicaProdutos.*;
 import ofertaDesconto.LogicaOfertaDesconto;
