@@ -75,7 +75,7 @@ public class LogicaProdutos {
       String quantProduto = this.newScanner.nextLine();
       intQuantProduto = Integer.parseInt(quantProduto);
     } catch (NumberFormatException e) {
-      System.out.println("Preço preenchido com string em vez de numero, tente novamente!");
+      System.out.println("Campo preenchido com string em vez de numero, tente novamente!");
       return;
     }
     

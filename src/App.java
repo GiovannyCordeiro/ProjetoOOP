@@ -9,6 +9,16 @@ import relatorioVendas.RelatorioVendas;
 
 public class App {
     public static void main(String[] args) throws Exception {
+      // Tratando erro de cancelamento repentino no sistema
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+            System.out.println("Mensagem do sistema:");
+            System.out.println("Cancelamento forçado do sistema, obrigado por utilizar!");
+            System.out.println("Qualquer dúvida entre em contato com o suporte");
+        }
+      });
+
         // Variaveis globais de armazenamento
         ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
         ArrayList ListaUsuarios = new ArrayList<>();
@@ -68,4 +78,6 @@ public class App {
         // System.out.println(ListaUsuarios.size());
         scanner.close();
     }
+
+    
 }

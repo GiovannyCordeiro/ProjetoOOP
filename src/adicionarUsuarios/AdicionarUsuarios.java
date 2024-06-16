@@ -31,13 +31,22 @@ public class AdicionarUsuarios {
     System.out.println("Digite o nome:");
     this.nome = scanner.nextLine();
 
-    System.out.println("Digite a idade");
-    String idade = scanner.nextLine();
-    this.idadeInt = Integer.parseInt(idade);
+    String idade;
+    String numeroContato;
 
-    System.out.println("Digite numero de contato");
-    String numeroContato = scanner.nextLine();
-    this.numeroContatoInt = Integer.parseInt(numeroContato);
+    try {
+      System.out.println("Digite a idade");
+      idade = scanner.nextLine();
+      this.idadeInt = Integer.parseInt(idade);
+
+      System.out.println("Digite numero de contato");
+      numeroContato = scanner.nextLine();
+      this.numeroContatoInt = Integer.parseInt(numeroContato);
+
+    } catch (NumberFormatException e){
+      System.out.println("Campo preenchido com string em vez de numero, tente novamente!");
+      return;
+    }
 
     // inputs especificos
     switch (opcao) {
@@ -67,7 +76,14 @@ public class AdicionarUsuarios {
       String setor = scanner.nextLine();
 
       System.out.println("Digite numero balcao");
-      String numeroBalcao = scanner.nextLine();
+      String numeroBalcao;
+      try {
+        numeroBalcao = scanner.nextLine();
+      } catch (NumberFormatException e){
+        System.out.println("Preço preenchido com string em vez de numero, tente novamente!");
+        return;
+      }
+      
       int numeroBalcaoInt = Integer.parseInt(numeroBalcao);
 
       Caixa novoCaixa = new Caixa(nome, idadeInt, numeroContatoInt, setor, numeroBalcaoInt);
