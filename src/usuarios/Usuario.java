@@ -11,3 +11,4 @@ abstract class Usuario {
     this.numeroContato = numeroContato;
   }
 }
+

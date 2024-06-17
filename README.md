@@ -1,9 +1,7 @@
 ## Projeto POO
 
 ### Equipe
-Bianca Keylla
-Giovanny Cordeiro
-Viviane Valentim
+Bianca Keylla, Giovanny Cordeiro, Viviane Valentim
 
 ### Requisitos
 JDK e VSCODE
